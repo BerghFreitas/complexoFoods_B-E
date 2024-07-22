@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loja de Comida</title>
+    <!-- Link do Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="bg-dark text-white text-center py-3">
+        <h1>Loja de Comida</h1>
+        <nav>
+            <ul class="nav justify-content-center">
+                <li class="nav-item"><a class="nav-link text-white" href="#" onclick="showTab('pizza')">Pizza</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#" onclick="showTab('macarrao')">Macarrão</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#" onclick="showTab('sushi')">Sushi</a></li>
+                <li class="nav-item"><a class="nav-link text-white" href="#" onclick="showTab('carrinho')">Carrinho (<span id="cart-count" class="cart-count">0</span>)</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        <section id="pizza" class="tab-content">
+            <h2>Pizza</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Pizza de Calabresa</h3>
+                            <p class="card-text">R$ 35,00</p>
+                            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Pizza de Calabresa', 35)">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Pizza de Mussarela</h3>
+                            <p class="card-text">R$ 35,00</p>
+                            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Pizza de Mussarela', 35)">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Pizza Marguerita</h3>
+                            <p class="card-text">R$ 35,00</p>
+                            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Pizza Marguerita', 35)">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="macarrao" class="tab-content" style="display: none;">
+            <h2>Macarrão</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Macarrão à Bolonhesa</h3>
+                            <p class="card-text">R$ 17,00</p>
+                            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Macarrão à Bolonhesa', 17)">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Macarrão ao Alho e Óleo</h3>
+                            <p class="card-text">R$ 17,00</p>
+                            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Macarrão ao Alho e Óleo', 17)">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Macarrão Pesto</h3>
+                            <p class="card-text">R$ 17,00</p>
+                            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Macarrão Pesto', 17)">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="sushi" class="tab-content" style="display: none;">
+            <h2>Sushi</h2>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Sushi 10 peças</h3>
+                            <p class="card-text">R$ 15,00</p>
+                            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Sushi 10 peças', 15)">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Sushi 20 peças</h3>
+                            <p class="card-text">R$ 25,00</p>
+                            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Sushi 20 peças', 25)">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h3 class="card-title">Sushi 30 peças</h3>
+                            <p class="card-text">R$ 35,00</p>
+                            <button class="btn btn-primary" onclick="adicionarAoCarrinho('Sushi 30 peças', 35)">Adicionar ao carrinho</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="carrinho" class="tab-content" style="display: none;">
+            <h2>Carrinho</h2>
+            <ul id="cart-items" class="list-group mb-3"></ul>
+            <p id="total" class="font-weight-bold"></p>
+            <button class="btn btn-success" onclick="finalizarCompra()">Finalizar Compra</button>
+        </section>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
